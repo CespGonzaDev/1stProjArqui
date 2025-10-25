@@ -3,6 +3,7 @@ import ControlsPanel from "./components/ControlsPanel";
 import DataTable from "./components/DataTable";
 import ChartPanel from "./components/ChartPanel";
 import { getLecturasPorRangoRTDB } from "./firebaseQueries";
+import { exportarResultadosPDF } from "./components/exportarPDF";  
 
 
 
@@ -11,6 +12,8 @@ export default function App() {
   const [datos, setDatos] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [mensaje, setMensaje] = useState("");
+  
+
 
   // 🔹 CONSULTAR (y generar automáticamente si no hay datos)
   const handleConsultar = async (filtros) => {
@@ -95,6 +98,9 @@ export default function App() {
               <DataTable rows={datos} />
             </div>
             <ChartPanel datos={datos} />
+            <button onClick={() => exportarResultadosPDF(datos)}>
+              Exportar a PDF
+            </button>
           </>
         )}
       </div>
