@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-image: url('/pexels-francesco-ungaro-281260.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+/* Oscurece un poco el fondo cuando está en modo oscuro */
+body.dark {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+    url('/pexels-francesco-ungaro-281260.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+div {
+      display: flex;
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center;     /* Centra verticalmente */
+      height: 200px;
+      background-color: lightblue;
+    }

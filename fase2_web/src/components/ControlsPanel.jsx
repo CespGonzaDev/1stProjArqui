@@ -31,7 +31,12 @@ export default function ControlsPanel({ onConsultar }) {
             type="date"
             value={fecha.inicio}
             onChange={e => setFecha({ ...fecha, inicio: e.target.value })}
-            className="border rounded p-2 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-100"
+            className="border border-blue-200 rounded-lg p-2 w-full 
+           bg-white/80 text-gray-800 shadow-md hover:shadow-lg transition-shadow duration-300
+           focus:outline-none focus:ring-2 focus:ring-blue-400 
+           dark:bg-gray-800 dark:text-gray-100"
+             style={{ colorScheme: 'light' }}
+             
           />
         </div>
         <div className="flex-1">
@@ -40,7 +45,11 @@ export default function ControlsPanel({ onConsultar }) {
             type="date"
             value={fecha.fin}
             onChange={e => setFecha({ ...fecha, fin: e.target.value })}
-            className="border rounded p-2 w-full bg-gray-50 dark:bg-gray-700 dark:text-gray-100"
+            className="border border-blue-300 rounded-md p-2 w-full 
+             bg-blue-50 text-gray-900 
+             focus:outline-none focus:ring-2 focus:ring-blue-400 
+             shadow-sm"
+             style={{ colorScheme: 'light' }}
           />
         </div>
       </div>
@@ -50,7 +59,11 @@ export default function ControlsPanel({ onConsultar }) {
       <select
         value={variable}
         onChange={e => setVariable(e.target.value)}
-        className="border rounded p-2 w-full mb-3 bg-gray-50 dark:bg-gray-700 dark:text-gray-100"
+        className="border border-blue-300 rounded-md p-2 w-full 
+             bg-blue-50 text-gray-900 
+             focus:outline-none focus:ring-2 focus:ring-blue-400 
+             shadow-sm"
+             style={{ colorScheme: 'light' }}
       >
         <option value="">-- Selecciona una variable --</option>
         <option value="temperatura">Temperatura °C</option>
@@ -66,6 +79,7 @@ export default function ControlsPanel({ onConsultar }) {
             type="checkbox"
             checked={promedioHora}
             onChange={e => setPromedioHora(e.target.checked)}
+            className="accent-blue-500"
           />
           Promedio por hora (día)
         </label>
@@ -74,6 +88,7 @@ export default function ControlsPanel({ onConsultar }) {
             type="checkbox"
             checked={promedioDia}
             onChange={e => setPromedioDia(e.target.checked)}
+            className="accent-blue-500"
           />
           Promedio por día (rango)
         </label>
@@ -82,6 +97,7 @@ export default function ControlsPanel({ onConsultar }) {
             type="checkbox"
             checked={maxMin}
             onChange={e => setMaxMin(e.target.checked)}
+            className="accent-blue-500"
           />
           Máximo / Mínimo histórico
         </label>
@@ -91,11 +107,32 @@ export default function ControlsPanel({ onConsultar }) {
       <button
         onClick={handleConsultar}
         disabled={!puedeConsultar}
-        className={`w-full p-2 rounded font-semibold transition ${
-          puedeConsultar
-            ? "bg-blue-500 hover:bg-blue-600 text-white"
-            : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed"
-        }`}
+        style={{
+           background: puedeConsultar
+            ? "linear-gradient(to right, #facc15, #ca8a04)" // amarillo degradado
+            : "#9ca3af", // gris si está deshabilitado
+          color: puedeConsultar ? "black" : "white", // texto oscuro sobre amarillo
+          fontWeight: "600",
+          padding: "10px 16px",
+          borderRadius: "10px",
+          boxShadow: puedeConsultar
+            ? "0 4px 10px rgba(250, 204, 21, 0.5)" // sombra dorada
+            : "none",
+          cursor: puedeConsultar ? "pointer" : "not-allowed",
+          transition: "all 0.3s ease-in-out",
+        }}
+        onMouseEnter={(e) => {
+          if (puedeConsultar) {
+            e.target.style.background = "linear-gradient(to right, #eab308, #a16207)"; // más oscuro al pasar
+            e.target.style.transform = "scale(1.05)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (puedeConsultar) {
+            e.target.style.background = "linear-gradient(to right, #facc15, #ca8a04)";
+            e.target.style.transform = "scale(1)";
+          }
+        }}
       >
         🔍 Consultar
       </button>
