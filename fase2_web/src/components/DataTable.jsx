@@ -4,6 +4,7 @@ export default function DataTable({ rows }) {
   const mostrarTemperatura = rows.some(r => r.temperatura !== "");
   const mostrarHumedad = rows.some(r => r.humedad !== "");
   const mostrarRadiacion = rows.some(r => r.radiacion !== "");
+  
 
   return (
     <div className="overflow-x-auto">
