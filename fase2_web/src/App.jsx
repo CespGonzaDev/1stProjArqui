@@ -9,9 +9,8 @@ export default function App() {
   const [datos, setDatos] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [mensaje, setMensaje] = useState("📊 CONSULTAR y generar automáticamente si no hay datos");
-  const [variableActual, setVariableActual] = useState(""); // ← NUEVO: guardamos la variable seleccionada
-
-  // CONSULTAR (y generar automáticamente si no hay datos)
+ // const [cargando, setCargando] = useState(false);
+  const [variableActual, setVariableActual] = useState(""); 
   const handleConsultar = async (filtros) => {
     const { fecha, variable, promedioHora, promedioDia, maxMin } = filtros;
     setVariableActual(variable); // ← NUEVO: guardamos la variable para pasarla al gráfico
@@ -223,10 +222,13 @@ export default function App() {
       backgroundImage: "url('/pexels-francesco-ungaro-281260.jpg')", // tu imagen de fondo
     }}
   >
-    
-    <h1 className="text-4xl font-extrabold mb-10 text-center bg-gradient-to-r from-blue-500 via-emerald-400 to-yellow-400 text-transparent bg-clip-text drop-shadow-lg">
+    <div>
+      <h1 className="titulo">
       🌤️ Consultas Ambientales IoT
     </h1>
+    
+    </div>
+
 
     
     <div className="bg-white/85 dark:bg-gray-900/80 rounded-2xl shadow-2xl backdrop-blur-md p-10 w-full max-w-4xl">
@@ -254,7 +256,8 @@ export default function App() {
             <h2 className="text-2xl font-semibold mb-3 dark:text-white text-gray-800 text-center">
               📋 Resultados
             </h2>
-            <DataTable rows={datos} />
+            <ChartPanel datos={datos} variable={variableActual} />
+            
 
             {/* Botón Exportar PDF */}
             <div className="flex justify-center mt-6">
@@ -287,7 +290,8 @@ export default function App() {
           </div>
 
           {/* Gráfico */}
-          <ChartPanel datos={datos} variable={variableActual} />
+          <DataTable rows={datos} />
+          
         </>
       )}
     </div>

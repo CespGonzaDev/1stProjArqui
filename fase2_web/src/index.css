@@ -24,7 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -84,6 +83,52 @@ body.dark {
 }
 
 
+.titulo {
+  align-items: center ;
+}
+.fechas {
+  align-items: center ;
+  display: flex ;
+  margin-bottom: 50px ;
+}
 
+.divHasta
+{
+  margin-left: 200px ;
+}
+
+.textHasta
+{
+  margin-left: 20px ;
+}
+
+.textRango
+{
+  margin-bottom: 10px ;
+}
+
+.divselect
+{
+  margin-left: 213px ;
+  margin-bottom: 30px ;
+}
+
+.divcheckbox
+{
+  margin-left: 20px;
+  margin-bottom: 30px ;
+}
+
+.divcheckboxP
+{
+  
+  margin-bottom: 40px ;
+}
+
+.divConsultar
+{
+  margin-left: 205px ;
+  margin-bottom: 35px;
+}
 
 
